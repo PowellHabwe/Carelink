@@ -1,0 +1,15 @@
+asgiref==3.2.10
+certifi==2022.12.7
+charset-normalizer==3.0.1
+Django==3.1.1
+django-admin-honeypot==1.1.0
+googlemaps
+gunicorn==20.1.0
+idna==3.4
+Pillow==9.4.0
+python-decouple==3.7
+pytz==2022.7.1
+requests==2.28.2
+sqlparse==0.4.3
+urllib3==1.26.14
+whitenoise==6.4.0

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nearest Hospitals</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC33v5bHoBPy12vHUS9wvsz649SWVvP-88&libraries=places"></script>
+</head>
+<body>
+    <h1>Nearest Hospitals</h1>
+
+    <button id="getLocationBtn">Get Nearest Hospitals</button>
+
+    <script>
+        document.getElementById('getLocationBtn').addEventListener('click', function() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+
+                    // Send the latitude and longitude to the server
+                    fetch('http://127.0.0.1:8000/location?latitude=' + latitude + '&longitude=' + longitude)
+                        .then(response => response.json())
+                        .then(data => {
+                            // Handle the response data here
+                            console.log(data);
+                        })
+                        .catch(error => {
+                            // Handle any errors
+                            console.error(error);
+                        });
+                }, function(error) {
+                    // Handle geolocation error
+                    alert('Error: ' + error.message);
+                });
+            } else {
+                // Geolocation is not supported by this browser
+                alert('Geolocation is not supported');
+            }
+        });
+    </script>
+</body>
+</html>
